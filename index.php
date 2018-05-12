@@ -37,7 +37,6 @@
 									<div class="product-price">$79.00<span>$200.00</span></div>
 								</div>
 							</div>
-
 						</div>
 					</div>
 					<div class="clearfix"></div>
