@@ -1,4 +1,6 @@
-<?php include 'inc/header.php'; ?>
+<?php 
+require_once "config/connect.php";
+include 'inc/header.php'; ?>
 <?php include 'inc/nav.php'; ?>
 
 <!-- SHOP CONTENT -->
