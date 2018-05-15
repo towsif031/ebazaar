@@ -76,10 +76,10 @@ if(isset($_POST) & !empty($_POST)){
 					<select class="form-control" id="productcategory" name="productcategory">
 						<option value="">---SELECT CATEGORY---</option>
 						<?php
-							$sql = "SELECT * FROM category";
-							$res = mysqli_query($connection, $sql);
-							while ($r = mysqli_fetch_assoc($res)) {
-						?>
+						$sql = "SELECT * FROM category";
+						$res = mysqli_query($connection, $sql);
+						while ($r = mysqli_fetch_assoc($res)) {
+							?>
 							<option value="<?php echo $r['id']; ?>"><?php echo $r['name']; ?></option>
 						<?php } ?>
 					</select>
