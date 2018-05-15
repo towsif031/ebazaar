@@ -18,9 +18,14 @@ include 'inc/header.php'; ?>
 					<div class="row">
 						<div id="shop-mason" class="shop-mason-4col">
 
-							<?php $sql = "SELECT * FROM products";
-									$res = mysqli_query($connection, $sql);
-									while($r = mysqli_fetch_assoc($res)){
+							<?php
+								$sql = "SELECT * FROM products";
+								if(isset($_GET['id']) & !empty($_GET['id'])){
+									$id = $_GET['id'];
+									$sql .= " WHERE catid=$id";
+								}
+								$res = mysqli_query($connection, $sql);
+								while($r = mysqli_fetch_assoc($res)){
 							?>
 							<div class="sm-item isotope-item">
 								<div class="product">
@@ -40,7 +45,7 @@ include 'inc/header.php'; ?>
 										<span class="fa fa-star act"></span>
 										<span class="fa fa-star act"></span>
 									</div>
-									<h2 class="product-title"><a href="#"><?php echo $r['name']; ?></a></h2>
+									<h2 class="product-title"><a href="single.php?id=<?php echo $r['id']; ?>"><?php echo $r['name']; ?></a></h2>
 									<div class="product-price"><?php echo $r['price']; ?> BDT</div>
 								</div>
 							</div>

@@ -1,7 +1,17 @@
 <?php 
 require_once "config/connect.php";
-include 'inc/header.php'; ?>
-<?php include 'inc/nav.php'; ?>
+include 'inc/header.php';
+include 'inc/nav.php';
+if(isset($_GET['id']) & !empty($_GET['id'])){
+    $id = $_GET['id'];
+    $prodsql = "SELECT * FROM products WHERE id=$id";
+    $prodres = mysqli_query($connection, $prodsql);
+    $prodr = mysqli_fetch_assoc($prodres);
+}else{
+    header('location: index.php');
+}
+
+?>
 
 <!-- SHOP CONTENT -->
 <section id="content">
@@ -19,31 +29,13 @@ include 'inc/header.php'; ?>
                             <div class="gal-wrap">
                                 <div id="gal-slider" class="flexslider">
                                     <ul class="slides">
-                                        <li><img src="images/shop/1.jpg" class="img-responsive" alt="" /></li>
-                                        <li><img src="images/shop/2.jpg" class="img-responsive" alt="" /></li>
-                                        <li><img src="images/shop/3.jpg" class="img-responsive" alt="" /></li>
-                                        <li><img src="images/shop/4.jpg" class="img-responsive" alt="" /></li>
+                                        <li><img src="admin/<?php echo $prodr['thumb']; ?>" class="img-responsive" alt="" /></li>
                                     </ul>
                                 </div>
                                 <ul class="gal-nav">
                                     <li>
                                         <div>
-                                            <img src="images/shop/1.jpg" class="img-responsive" alt="" />
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <img src="images/shop/2.jpg" class="img-responsive" alt="" />
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <img src="images/shop/3.jpg" class="img-responsive" alt="" />
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <img src="images/shop/4.jpg" class="img-responsive" alt="" />
+                                            <img src="admin/<?php echo $prodr['thumb']; ?>" class="img-responsive" alt="" />
                                         </div>
                                     </li>
                                 </ul>
@@ -51,12 +43,10 @@ include 'inc/header.php'; ?>
                             </div>
                         </div>
                         <div class="col-md-7 product-single">
-                            <h2 class="product-single-title no-margin">Shaving Knives</h2>
+                            <h2 class="product-single-title no-margin"><?php echo $prodr['name']; ?></h2>
                             <div class="space10"></div>
-                            <div class="p-price">$199.99</div>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                have suffered alteration. There are many variations of passages of Lorem Ipsum
-                                available, but the majority have suffered alteration.</p>
+                            <div class="p-price"><?php echo $prodr['price']; ?> BDT</div>
+                            <p><?php echo $prodr['description']; ?></p>
                             <div class="product-quantity">
                                 <span>Quantity:</span>
                                 <form>
@@ -67,11 +57,13 @@ include 'inc/header.php'; ?>
                                 <a href="#" class="button btn-small">Add to Cart</a>
                             </div>
                             <div class="product-meta">
-                                <span>Categories: <a href="#">bag</a>, <a href="#">black</a>, <a href="#">darck</a>,
-                                    <a href="#">sport</a>, <a href="#">ewuipment</a></span><br>
-                                <span>Tags: <a href="#">point</a>, <a href="#">size</a>, <a href="#">bike</a>,
-                                    <a href="#">bag</a>, <a href="#">black</a>, <a href="#">darck</a>, <a href="#">sport</a>,
-                                    <a href="#">ewuipment</a></span>
+                                <span>Categories:
+                                <?php
+                                    $prodcatsql = "SELECT * FROM category WHERE id={$prodr['catid']}";
+                                    $prodcatres = mysqli_query($connection, $prodcatsql);
+                                    $prodcatr = mysqli_fetch_assoc($prodcatres);
+                                ?>
+                                <a href="#"><?php echo $prodcatr['name']; ?></a></span><br>
                             </div>
                         </div>
                     </div>
@@ -80,13 +72,15 @@ include 'inc/header.php'; ?>
                         <!-- Nav Tabs -->
                         <div class="align-center mb-40 mb-xs-30">
                             <ul class="nav nav-tabs tpl-minimal-tabs animate">
-                                <li class="active col-md-4">
+                                <li class="active col-md-6">
                                     <a aria-expanded="true" href="#mini-one" data-toggle="tab">Overview</a>
                                 </li>
-                                <li class="col-md-4">
+
+                                <!-- <li class="col-md-4">
                                     <a aria-expanded="false" href="#mini-two" data-toggle="tab">Product Info</a>
-                                </li>
-                                <li class="col-md-4">
+                                </li> -->
+
+                                <li class="col-md-6">
                                     <a aria-expanded="false" href="#mini-three" data-toggle="tab">Reviews</a>
                                 </li>
                             </ul>
@@ -95,27 +89,10 @@ include 'inc/header.php'; ?>
                         <!-- Tab panes -->
                         <div style="height: auto;" class="tab-content tpl-minimal-tabs-cont align-center section-text">
                             <div style="" class="tab-pane fade active in" id="mini-one">
-                                <p>There are many variations of passages of Lorem Ipsum available, but the
-                                    majority have suffered alteration. There are many variations of passages of
-                                    Lorem Ipsum available, but the majority have suffered alteration.</p>
-                                <table class="table tba2">
-                                    <tbody>
-                                        <tr>
-                                            <td>Sizes</td>
-                                            <td>M, L, XL, XXL</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Prodused in</td>
-                                            <td>USA</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Material</td>
-                                            <td>plastic, textile</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <p><?php echo $prodr['description']; ?></p>
                             </div>
-                            <div style="" class="tab-pane fade" id="mini-two">
+
+                            <!-- <div style="" class="tab-pane fade" id="mini-two">
                                 <table class="table tba2">
                                     <tbody>
                                         <tr>
@@ -148,7 +125,8 @@ include 'inc/header.php'; ?>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> -->
+
                             <div style="" class="tab-pane fade" id="mini-three">
                                 <div class="col-md-12">
                                     <h4 class="uppercase space35">3 Reviews for Shaving Knives</h4>
@@ -250,14 +228,21 @@ include 'inc/header.php'; ?>
                         <hr>
                         <div class="row">
                             <div id="shop-mason" class="shop-mason-3col">
+                                
+                                <?php
+                                    $relsql = "SELECT * FROM products WHERE id != $id ORDER BY rand() LIMIT 3";
+                                    $relres = mysqli_query($connection, $relsql);
+                                    while($relr = mysqli_fetch_assoc($relres)){
+                                ?>
+
                                 <div class="sm-item isotope-item">
                                     <div class="product">
                                         <div class="product-thumb">
-                                            <img src="images/shop/1.jpg" class="img-responsive" alt="">
+                                            <img src="admin/<?php echo $relr['thumb']; ?>" class="img-responsive" alt="">
                                             <div class="product-overlay">
                                                 <span>
-                                                    <a href="./shop-single-full.html" class="fa fa-link"></a>
-                                                    <a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
+                                                    <a href="single.php?id=<?php echo $relr['id']; ?>" class="fa fa-link"></a>
+                                                    <a href="#" class="fa fa-shopping-cart"></a>
                                                 </span>
                                             </div>
                                         </div>
@@ -268,54 +253,13 @@ include 'inc/header.php'; ?>
                                             <span class="fa fa-star act"></span>
                                             <span class="fa fa-star act"></span>
                                         </div>
-                                        <h2 class="product-title"><a href="#">Shave Knives</a></h2>
-                                        <div class="product-price">$79.00<span>$200.00</span></div>
+                                        <h2 class="product-title"><a href="#"><?php echo $relr['name']; ?></a></h2>
+                                        <div class="product-price"><?php echo $relr['price']; ?> BDT</div>
                                     </div>
                                 </div>
-                                <div class="sm-item isotope-item">
-                                    <div class="product">
-                                        <div class="product-thumb">
-                                            <img src="images/shop/2.jpg" class="img-responsive" alt="">
-                                            <div class="product-overlay">
-                                                <span>
-                                                    <a href="./shop-single-full.html" class="fa fa-link"></a>
-                                                    <a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="rating">
-                                            <span class="fa fa-star act"></span>
-                                            <span class="fa fa-star act"></span>
-                                            <span class="fa fa-star act"></span>
-                                            <span class="fa fa-star act"></span>
-                                            <span class="fa fa-star"></span>
-                                        </div>
-                                        <h2 class="product-title"><a href="#">Comb Scissors</a></h2>
-                                        <div class="product-price">$79.00<span>$200.00</span></div>
-                                    </div>
-                                </div>
-                                <div class="sm-item isotope-item">
-                                    <div class="product">
-                                        <div class="product-thumb">
-                                            <img src="images/shop/3.jpg" class="img-responsive" alt="">
-                                            <div class="product-overlay">
-                                                <span>
-                                                    <a href="./shop-single-full.html" class="fa fa-link"></a>
-                                                    <a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="rating">
-                                            <span class="fa fa-star act"></span>
-                                            <span class="fa fa-star act"></span>
-                                            <span class="fa fa-star act"></span>
-                                            <span class="fa fa-star act"></span>
-                                            <span class="fa fa-star act"></span>
-                                        </div>
-                                        <h2 class="product-title"><a href="#">Water Spray</a></h2>
-                                        <div class="product-price">$79.00<span>$200.00</span></div>
-                                    </div>
-                                </div>
+
+                                <?php } ?>
+
                             </div>
                         </div>
                     </div>
