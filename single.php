@@ -1,16 +1,16 @@
 <?php 
-require_once "config/connect.php";
-include 'inc/header.php';
-include 'inc/nav.php';
-if(isset($_GET['id']) & !empty($_GET['id'])){
-    $id = $_GET['id'];
-    $prodsql = "SELECT * FROM products WHERE id=$id";
-    $prodres = mysqli_query($connection, $prodsql);
-    $prodr = mysqli_fetch_assoc($prodres);
-}else{
-    header('location: index.php');
-}
-
+    session_start();
+    require_once "config/connect.php";
+    include 'inc/header.php';
+    include 'inc/nav.php';
+    if(isset($_GET['id']) & !empty($_GET['id'])){
+        $id = $_GET['id'];
+        $prodsql = "SELECT * FROM products WHERE id=$id";
+        $prodres = mysqli_query($connection, $prodsql);
+        $prodr = mysqli_fetch_assoc($prodres);
+    }else{
+        header('location: index.php');
+    }
 ?>
 
 <!-- SHOP CONTENT -->
@@ -43,27 +43,36 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
                             </div>
                         </div>
                         <div class="col-md-7 product-single">
-                            <h2 class="product-single-title no-margin"><?php echo $prodr['name']; ?></h2>
+                            <h2 class="product-single-title no-margin">
+                                <?php echo $prodr['name']; ?>
+                            </h2>
                             <div class="space10"></div>
-                            <div class="p-price"><?php echo $prodr['price']; ?> BDT</div>
-                            <p><?php echo $prodr['description']; ?></p>
-                            <div class="product-quantity">
-                                <span>Quantity:</span>
-                                <form>
-                                    <input type="text" placeholder="1">
-                                </form>
-                            </div>
-                            <div class="shop-btn-wrap">
-                                <a href="#" class="button btn-small">Add to Cart</a>
-                            </div>
+                            <div class="p-price">
+                                <?php echo $prodr['price']; ?> BDT</div>
+                            <p>
+                                <?php echo $prodr['description']; ?>
+                            </p>
+
+                            <form method="GET" action="addtocart.php">
+                                <div class="product-quantity">
+                                    <span>Quantity:</span>
+                                    <input type="hidden" name="id" value="<?php echo $prodr['id']; ?>">
+                                    <input type="text" name="quant" placeholder="1">
+                                </div>
+                                <div class="shop-btn-wrap">
+                                    <input type="submit" class="button btn-small" value="Add to Cart">
+                                </div>
+                            </form>
+
                             <div class="product-meta">
                                 <span>Categories:
-                                <?php
-                                    $prodcatsql = "SELECT * FROM category WHERE id={$prodr['catid']}";
-                                    $prodcatres = mysqli_query($connection, $prodcatsql);
-                                    $prodcatr = mysqli_fetch_assoc($prodcatres);
-                                ?>
-                                <a href="#"><?php echo $prodcatr['name']; ?></a></span><br>
+                                    <?php
+                                        $prodcatsql = "SELECT * FROM category WHERE id={$prodr['catid']}";
+                                        $prodcatres = mysqli_query($connection, $prodcatsql);
+                                        $prodcatr = mysqli_fetch_assoc($prodcatres);
+                                    ?>
+                                    <a href="#">
+                                        <?php echo $prodcatr['name']; ?></a></span><br>
                             </div>
                         </div>
                     </div>
@@ -89,7 +98,9 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
                         <!-- Tab panes -->
                         <div style="height: auto;" class="tab-content tpl-minimal-tabs-cont align-center section-text">
                             <div style="" class="tab-pane fade active in" id="mini-one">
-                                <p><?php echo $prodr['description']; ?></p>
+                                <p>
+                                    <?php echo $prodr['description']; ?>
+                                </p>
                             </div>
 
                             <!-- <div style="" class="tab-pane fade" id="mini-two">
@@ -228,7 +239,7 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
                         <hr>
                         <div class="row">
                             <div id="shop-mason" class="shop-mason-3col">
-                                
+
                                 <?php
                                     $relsql = "SELECT * FROM products WHERE id != $id ORDER BY rand() LIMIT 3";
                                     $relres = mysqli_query($connection, $relsql);
@@ -253,8 +264,10 @@ if(isset($_GET['id']) & !empty($_GET['id'])){
                                             <span class="fa fa-star act"></span>
                                             <span class="fa fa-star act"></span>
                                         </div>
-                                        <h2 class="product-title"><a href="#"><?php echo $relr['name']; ?></a></h2>
-                                        <div class="product-price"><?php echo $relr['price']; ?> BDT</div>
+                                        <h2 class="product-title"><a href="#">
+                                                <?php echo $relr['name']; ?></a></h2>
+                                        <div class="product-price">
+                                            <?php echo $relr['price']; ?> BDT</div>
                                     </div>
                                 </div>
 

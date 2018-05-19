@@ -1,7 +1,9 @@
-<?php 
-require_once "config/connect.php";
-include 'inc/header.php'; ?>
-<?php include 'inc/nav.php'; ?>
+<?php
+	session_start();
+	require_once "config/connect.php";
+	include 'inc/header.php';
+	include 'inc/nav.php';
+?>
 
 <div class="close-btn fa fa-times"></div>
 
@@ -34,7 +36,7 @@ include 'inc/header.php'; ?>
 										<div class="product-overlay">
 											<span>
 												<a href="single.php?id=<?php echo $r['id']; ?>" class="fa fa-link"></a>
-												<a href="#" class="fa fa-shopping-cart"></a>
+												<a href="addtocart.php?id=<?php echo $r['id']; ?>" class="fa fa-shopping-cart"></a>
 											</span>
 										</div>
 									</div>
