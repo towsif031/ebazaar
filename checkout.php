@@ -1,6 +1,11 @@
 <?php
     session_start();
-    require_once "config/connect.php";
+	require_once "config/connect.php"; 
+
+	if(!isset($_SESSION['customer']) & empty($_SESSION['customer'])){
+		header('location: login.php');
+    }
+    
     include 'inc/header.php';
     include 'inc/nav.php';
 ?>

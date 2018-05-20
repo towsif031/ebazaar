@@ -20,7 +20,16 @@
                             <div class="box-content">
                                 <h3 class="heading text-center">I'm a Returning Customer</h3>
                                 <div class="clearfix space40"></div>
-                                <form class="logregform" method="POST" action="">
+
+                                <?php
+                                    if(isset($_GET['message']) & $_GET['message'] == 1){
+                                ?>
+                                        <div class="alert alert-danger" role="alert">
+                	                        <?php echo "Invalid Login Credentials!"; ?>
+                                        </div>
+                                <?php } ?>
+
+                                <form class="logregform" method="POST" action="loginprocess.php">
                                     <div class="row">
                                         <div class="form-group">
                                             <div class="col-md-12">
@@ -60,7 +69,16 @@
                             <div class="box-content">
                                 <h3 class="heading text-center">Register An Account</h3>
                                 <div class="clearfix space40"></div>
-                                <form class="logregform" method="POST" action="">
+
+                                <?php
+                                    if(isset($_GET['message']) & $_GET['message'] == 2){
+                                ?>
+                                        <div class="alert alert-danger" role="alert">
+                	                        <?php echo "Failed to Register!"; ?>
+                                        </div>
+                                <?php } ?>
+
+                                <form class="logregform" method="POST" action="registerprocess.php">
                                     <div class="row">
                                         <div class="form-group">
                                             <div class="col-md-12">
