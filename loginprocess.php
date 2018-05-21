@@ -3,14 +3,15 @@
     require_once "config/connect.php"; 
 
     if(isset($_POST) & !empty($_POST)){
-        $email = mysqli_real_escape_string($connection, $_POST['email']);
-        $password = md5($_POST['password']);
+        // $email = mysqli_real_escape_string($connection, $_POST['email']);
+        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+        $password = $_POST['password'];
 
-        $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+        $sql = "SELECT * FROM users WHERE email='$email'";
         $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
+        $r = mysqli_fetch_assoc($result);
 
-        $count = mysqli_num_rows($result);
-        if($count == 1){
+        if(password_verify($password, $r['password'])){
             //echo "User exits! Create a seesion.";
             $_SESSION['customer'] = $email;
             header('location: checkout.php');

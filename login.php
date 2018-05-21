@@ -22,12 +22,16 @@
                                 <div class="clearfix space40"></div>
 
                                 <?php
-                                    if(isset($_GET['message']) & $_GET['message'] == 1){
+                                    if(isset($_GET['message'])){
+                                        if($_GET['message'] == 1){
                                 ?>
                                         <div class="alert alert-danger" role="alert">
                 	                        <?php echo "Invalid Login Credentials!"; ?>
                                         </div>
-                                <?php } ?>
+                                <?php
+                                        }
+                                    }
+                                ?>
 
                                 <form class="logregform" method="POST" action="loginprocess.php">
                                     <div class="row">
@@ -71,12 +75,16 @@
                                 <div class="clearfix space40"></div>
 
                                 <?php
-                                    if(isset($_GET['message']) & $_GET['message'] == 2){
+                                    if(isset($_GET['message'])){
+                                        if($_GET['message'] == 2){
                                 ?>
                                         <div class="alert alert-danger" role="alert">
                 	                        <?php echo "Failed to Register!"; ?>
                                         </div>
-                                <?php } ?>
+                                <?php
+                                        }
+                                    }
+                                ?>
 
                                 <form class="logregform" method="POST" action="registerprocess.php">
                                     <div class="row">
