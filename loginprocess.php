@@ -14,6 +14,7 @@
         if(password_verify($password, $r['password'])){
             //echo "User exits! Create a seesion.";
             $_SESSION['customer'] = $email;
+            $_SESSION['customerid'] = $r['id'];
             header('location: checkout.php');
         }else{
             // $fmsg = "Invalid login credentials!";

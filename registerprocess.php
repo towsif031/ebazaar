@@ -12,6 +12,7 @@
 
         if($result){
             $_SESSION['customer'] = $email;
+            $_SESSION['customerid'] = mysqli_insert_id($connection);
             header('location: checkout.php');
         }else{
             header('location: login.php?message=2');
