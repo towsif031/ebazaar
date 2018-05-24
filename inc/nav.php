@@ -78,7 +78,7 @@
 				<div class="ci-total">Subtotal: <?php echo $total; ?> BDT</div>
 				<div class="cart-btn">
 					<a href="cart.php">View Cart</a>
-					<a href="#">Checkout</a>
+					<a href="checkout.php">Checkout</a>
 				</div>
 			</div>
 		</div>

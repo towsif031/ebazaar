@@ -10,6 +10,7 @@
     include 'inc/nav.php';
 
     $uid = $_SESSION['customerid'];
+    $cart = $_SESSION['cart'];
 
     if(isset($_POST) & !empty($_POST)){
         if($_POST['agree'] == true){
@@ -34,7 +35,40 @@
                 echo $usql = "UPDATE usersmeta SET country='$country', firstname='$fname', lastname='$lname', company='$company', address1='$address1', address2='$address2', city='$city', state='$state', zip='$zip', phone=$phone WHERE uid='$uid'";
                 $ures = mysqli_query($connection, $usql) or die(mysqli_error($connection));
                 if($ures){
-                    echo "Insert orders - ures";
+                    $total = 0;
+                    foreach($cart as $key => $value){
+                        $ordsql = "SELECT * FROM products WHERE id=$key";
+                        $ordres = mysqli_query($connection, $ordsql);
+                        $ordr = mysqli_fetch_assoc($ordres);
+
+                        $total = $total + ($ordr['price'] * $value['quantity']);
+                    }
+
+                    echo $iosql = "INSERT INTO orders (uid, totalprice, orderstatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
+                    
+                    $iores = mysqli_query($connection, $iosql) or die(mysqli_errno($connection));
+                    if($iores){
+                        echo "Order inserted, insert order items <br>";
+                        $orderid = mysqli_insert_id($connection);
+                        foreach($cart as $key => $value){
+                            $ordsql = "SELECT * FROM products WHERE id=$key";
+                            $ordres = mysqli_query($connection, $ordsql);
+                            $ordr = mysqli_fetch_assoc($ordres);
+
+                            $pid = $ordr['id'];
+                            $productprice = $ordr['price'];
+                            $quantity = $value['quantity'];
+
+                            $orditemsql = "INSERT INTO orderitems (pid, pquantity, orderid, productprice) VALUES ('$pid', '$quantity', '$orderid', '$productprice')";
+
+                            $orditemres = mysqli_query($connection, $orditemsql) or die(mysqli_errno($connection));
+
+                            if($orditemres){
+                                echo "Order item inserted redirect to my acc page <br>";
+                            }
+                        }
+                    }
+                    // header('location: my-account.php');
                 }
             }else{
                 // insert data in usermeta table
@@ -66,8 +100,12 @@
                     <div class="col-md-6 col-md-offset-3">
                         <div class="billing-details">
                             <h3 class="uppercase">Billing Details</h3>
+                            <pre>
+                            <?php
+                                print_r($_SESSION['cart']);
+                            ?>
+                            </pre>
                             <div class="space30"></div>
-
                             <label class="">Country </label>
                             <select name="country" class="form-control">
                                 <option value="">Select Country</option>
