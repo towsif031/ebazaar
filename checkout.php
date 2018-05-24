@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     session_start();
 	require_once "config/connect.php"; 
 
@@ -48,7 +49,7 @@
                     
                     $iores = mysqli_query($connection, $iosql) or die(mysqli_errno($connection));
                     if($iores){
-                        echo "Order inserted, insert order items <br>";
+                        // echo "Order inserted, insert order items <br>";
                         $orderid = mysqli_insert_id($connection);
                         foreach($cart as $key => $value){
                             $ordsql = "SELECT * FROM products WHERE id=$key";
@@ -63,19 +64,56 @@
 
                             $orditemres = mysqli_query($connection, $orditemsql) or die(mysqli_errno($connection));
 
-                            if($orditemres){
-                                echo "Order item inserted redirect to my acc page <br>";
-                            }
+                            // if($orditemres){
+                            //     echo "Order item inserted redirect to my acc page <br>";
+                            // }
                         }
                     }
-                    // header('location: my-account.php');
+
+                    unset($_SESSION['cart']);
+                    header('location: my-account.php');
                 }
             }else{
                 // insert data in usermeta table
                 echo $isql = "INSERT INTO usersmeta (country, firstname, lastname, company, address1, address2, city, state, zip, phone, uid) VALUES ('$country', '$fname', '$lname', '$company', '$address1', '$address2', '$city', '$state', '$zip', '$phone', '$uid')";
                 $ires = mysqli_query($connection, $isql) or die(mysqli_error($connection));
                 if($ires){
-                    echo "Insert orders - ires";
+                    $total = 0;
+                    foreach($cart as $key => $value){
+                        $ordsql = "SELECT * FROM products WHERE id=$key";
+                        $ordres = mysqli_query($connection, $ordsql);
+                        $ordr = mysqli_fetch_assoc($ordres);
+
+                        $total = $total + ($ordr['price'] * $value['quantity']);
+                    }
+
+                    echo $iosql = "INSERT INTO orders (uid, totalprice, orderstatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
+                    
+                    $iores = mysqli_query($connection, $iosql) or die(mysqli_errno($connection));
+                    if($iores){
+                        // echo "Order inserted, insert order items <br>";
+                        $orderid = mysqli_insert_id($connection);
+                        foreach($cart as $key => $value){
+                            $ordsql = "SELECT * FROM products WHERE id=$key";
+                            $ordres = mysqli_query($connection, $ordsql);
+                            $ordr = mysqli_fetch_assoc($ordres);
+
+                            $pid = $ordr['id'];
+                            $productprice = $ordr['price'];
+                            $quantity = $value['quantity'];
+
+                            $orditemsql = "INSERT INTO orderitems (pid, pquantity, orderid, productprice) VALUES ('$pid', '$quantity', '$orderid', '$productprice')";
+
+                            $orditemres = mysqli_query($connection, $orditemsql) or die(mysqli_errno($connection));
+
+                            // if($orditemres){
+                            //     echo "Order item inserted redirect to my acc page <br>";
+                            // }
+                        }
+                    }
+
+                    unset($_SESSION['cart']);
+                    header('location: my-account.php');
                 }
             }
         }
@@ -100,11 +138,11 @@
                     <div class="col-md-6 col-md-offset-3">
                         <div class="billing-details">
                             <h3 class="uppercase">Billing Details</h3>
-                            <pre>
+                            <!-- <pre>
                             <?php
-                                print_r($_SESSION['cart']);
+                                // print_r($_SESSION['cart']);
                             ?>
-                            </pre>
+                            </pre> -->
                             <div class="space30"></div>
                             <label class="">Country </label>
                             <select name="country" class="form-control">
