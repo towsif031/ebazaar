@@ -2,7 +2,7 @@
 	<div id="mobnav-btn">Menu <i class="fa fa-bars"></i></div>
 	<ul class="sf-menu">
 		<li>
-			<a href="index.php">Home</a>
+			<a href="http://localhost/eshop/index.php">Home</a>
 		</li>
 		<li>
 			<a href="#">Shop</a>
@@ -26,8 +26,9 @@
 			<a href="#">My Account</a>
 			<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
 			<ul>
-				<li><a href="#">My Orders</a></li>
-				<li><a href="#">Logout</a></li>
+				<li><a href="http://localhost/eshop/my-account.php">My Orders</a></li>
+				<li><a href="http://localhost/eshop/update-details.php">Update Details</a></li>
+				<li><a href="http://localhost/eshop/logout.php">Logout</a></li>
 			</ul>
 		</li>
 		<li>

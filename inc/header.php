@@ -60,7 +60,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-xs-5 logo">
-						<a href="http://[::1]/cishop/admin"><img src="http://[::1]/cishop/assets/images/logo.png" class="img-responsive"
+						<a href="http://localhost/eshop/index.php"><img src="http://[::1]/cishop/assets/images/logo.png" class="img-responsive"
 							 alt="" /></a>
 					</div>
 					<div class="col-md-9 col-xs-7">
