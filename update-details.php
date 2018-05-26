@@ -26,7 +26,7 @@
         $phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
         
         // update data in usermeta table
-        echo $usql = "UPDATE usersmeta SET country='$country', firstname='$fname', lastname='$lname', company='$company', address1='$address1', address2='$address2', city='$city', state='$state', zip='$zip', phone=$phone WHERE uid='$uid'";
+        $usql = "UPDATE usersmeta SET country='$country', firstname='$fname', lastname='$lname', company='$company', address1='$address1', address2='$address2', city='$city', state='$state', zip='$zip', phone=$phone WHERE uid='$uid'";
         $ures = mysqli_query($connection, $usql) or die(mysqli_error($connection));
         if($ures){
         }

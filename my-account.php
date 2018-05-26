@@ -58,8 +58,10 @@
                                     <?php echo $ordr['totalprice']; ?> BDT
                                 </td>
                                 <td>
-                                    <a href="view-order.php?id=<?php echo $ordr['id']; ?>">View</a> |
-                                    <a href="cancel-order.php?id=<?php echo $ordr['id']; ?>">Cancel</a>
+                                    <a href="view-order.php?id=<?php echo $ordr['id']; ?>">View</a>
+                                    <?php if($ordr['orderstatus'] != 'Cancelled'){ ?>
+                                    | <a href="cancel-order.php?id=<?php echo $ordr['id']; ?>">Cancel</a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                             <?php } ?>
