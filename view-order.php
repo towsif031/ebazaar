@@ -27,41 +27,77 @@
                     <table class="cart-table account-table table table-bordered">
                         <thead>
                             <tr>
-                                <th>Order</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Payment Mode</th>
-                                <th>Total</th>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
                                 <th></th>
+                                <th>Total Price</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                                $ordsql = "SELECT * FROM orders WHERE uid='$uid'";
+                                if(isset($_GET['id']) & !empty($_GET['id'])){
+                                    $oid = $_GET['id'];
+                                }else{
+                                    header('location: my-account.php');
+                                }
+                                $ordsql = "SELECT * FROM orders WHERE uid='$uid' AND id='$oid'";
                                 $ordres = mysqli_query($connection, $ordsql);
-                                while($ordr = mysqli_fetch_assoc($ordres)){
+                                $ordr = mysqli_fetch_assoc($ordres);
+
+                                $orditemsql = "SELECT * FROM orderitems o JOIN products p WHERE o.orderid='$oid' AND o.pid=p.id";
+                                $orditemres = mysqli_query($connection, $orditemsql);
+                                while($orditemr = mysqli_fetch_assoc($orditemres)){
                             ?>
                             <tr>
                                 <td>
-                                    <?php echo $ordr['id']; ?>
+                                    <a href="single.php?id=<?php echo $orditemr['pid']; ?>"><?php echo substr($orditemr['name'], 0, 25); ?></a>
                                 </td>
                                 <td>
-                                    <?php echo $ordr['timestamp']; ?>
+                                    <?php echo $orditemr['pquantity']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $orditemr['productprice']; ?> BDT
+                                </td>
+                                <td></td>
+                                <td>
+                                    <?php echo $orditemr['productprice'] * $orditemr['pquantity']; ?> BDT
+                                </td>
+                            </tr>
+                            <?php } ?>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    Order Total
+                                </td>
+                                <td>
+                                    <?php echo $ordr['totalprice']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    Order Status
                                 </td>
                                 <td>
                                     <?php echo $ordr['orderstatus']; ?>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>
-                                    <?php echo $ordr['paymentmode']; ?>
+                                    Order Placed On
                                 </td>
                                 <td>
-                                    <?php echo $ordr['totalprice']; ?> BDT
-                                </td>
-                                <td>
-                                    <a href="view-order.php?id=<?php echo $ordr['id']; ?>">View</a>
+                                    <?php echo $ordr['timestamp']; ?>
                                 </td>
                             </tr>
-                            <?php } ?>
                         </tbody>
                     </table>
 
