@@ -111,7 +111,7 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <h4>My Address <a href="#">Edit</a></h4>
+                                <h4>My Address <a href="update-details.php">Edit</a></h4>
 
                                 <?php
                                     $csql = "SELECT u1.firstname, u1.lastname, u1.address1, u1.address2, u1.city, u1.state, u1.country, u1.company, u.email, u1.phone, u1.zip FROM users u JOIN usersmeta u1 WHERE u.id=u1.uid AND u.id=$uid";

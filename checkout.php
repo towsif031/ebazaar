@@ -138,11 +138,6 @@
                     <div class="col-md-6 col-md-offset-3">
                         <div class="billing-details">
                             <h3 class="uppercase">Billing Details</h3>
-                            <!-- <pre>
-                            <?php
-                                // print_r($_SESSION['cart']);
-                            ?>
-                            </pre> -->
                             <div class="space30"></div>
                             <label class="">Country </label>
                             <select name="country" class="form-control">
