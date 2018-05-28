@@ -9,58 +9,39 @@ if(!isset($_SESSION['email']) & empty($_SESSION['email'])){
 <?php include 'inc/header.php'; ?>
 <?php include 'inc/nav.php'; ?>
 
-<div class="close-btn fa fa-times"></div>
-
-<!-- SHOP CONTENT -->
 <section id="content">
 	<div class="content-blog">
 		<div class="container">
-			<div class="row">
-				<div class="page_header text-center">
-					<h2>Shop</h2>
-					<p>You can order products from here</p>
-				</div>
-				<div class="col-md-12">
-					<div class="row">
-						<div id="shop-mason" class="shop-mason-4col">
-							<div class="sm-item isotope-item">
-								<div class="product">
-									<div class="product-thumb">
-										<img src="images/shop/1.jpg" class="img-responsive" alt="">
-										<div class="product-overlay">
-											<span>
-												<a href="./shop-single-full.html" class="fa fa-link"></a>
-												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-											</span>
-										</div>
-									</div>
-									<div class="rating">
-										<span class="fa fa-star act"></span>
-										<span class="fa fa-star act"></span>
-										<span class="fa fa-star act"></span>
-										<span class="fa fa-star act"></span>
-										<span class="fa fa-star act"></span>
-									</div>
-									<h2 class="product-title"><a href="#">Shave Knives</a></h2>
-									<div class="product-price">$79.00<span>$200.00</span></div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"></div>
-					<!-- Pagination -->
-					<div class="page_nav">
-						<a href=""><i class="fa fa-angle-left"></i></a>
-						<a href="" class="active">1</a>
-						<a href="">2</a>
-						<a href="">3</a>
-						<a class="no-active">...</a>
-						<a href="">9</a>
-						<a href=""><i class="fa fa-angle-right"></i></a>
-					</div>
-					<!-- End Pagination -->
-				</div>
-			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Customer Name</th>
+						<th>Total Price</th>
+						<th>Order Status</th>
+						<th>Payment Mode</th>
+						<th>Order Placed On</th>
+						<th>Operations</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php				
+					$sql = "SELECT o.id, o.totalprice, o.orderstatus, o.paymentmode, o.`timestamp`, u.firstname, u.lastname FROM orders o JOIN usersmeta u WHERE o.uid=u.uid AND o.orderstatus != 'Cancelled' ORDER BY o.id DESC";
+					$res = mysqli_query($connection, $sql);
+					while($r = mysqli_fetch_assoc($res)){
+				?>
+					<tr>
+						<th scope="row"><?php echo $r['id']; ?></th>
+						<td><?php echo $r['firstname'] ." ". $r['lastname']; ?></td>
+						<td><?php echo $r['totalprice']; ?></td>
+						<td><?php echo $r['orderstatus']; ?></td>
+						<td><?php echo $r['paymentmode']; ?></td>
+						<td><?php echo $r['timestamp']; ?></td>
+						<td><a href="order-process.php?id=<?php echo $r['id']; ?>">Process Order</a></td>
+					</tr>
+				<?php } ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </section>
