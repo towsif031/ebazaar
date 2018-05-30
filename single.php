@@ -1,4 +1,5 @@
-<?php 
+<?php
+    ob_start();
     session_start();
     require_once "config/connect.php";
     include 'inc/header.php';
@@ -10,6 +11,20 @@
         $prodr = mysqli_fetch_assoc($prodres);
     }else{
         header('location: index.php');
+    }
+
+    $uid = $_SESSION['customerid'];
+
+    if(isset($_POST) & !empty($_POST)){
+        $review = filter_var($_POST['review'], FILTER_SANITIZE_STRING);
+
+        $reviewsql = "INSERT INTO reviews (pid, uid, review) VALUES ($id, $uid, '$review')";
+        $reviewres = mysqli_query($connection, $reviewsql);
+        if($reviewres){
+            $smsg ="Review Submitted Successfully";
+        }else{
+            $fmsg = "Failed to Submit Review!";
+        }
     }
 ?>
 
@@ -24,6 +39,18 @@
                 </div>
 
                 <div class="col-md-10 col-md-offset-1">
+                <?php
+			        if(isset($smsg)){?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo "$smsg"; ?>
+                    </div>
+                <?php } ?>
+                <?php
+				    if(isset($fmsg)){?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo "$fmsg"; ?>
+                    </div>
+                <?php } ?>
                     <div class="row">
                         <div class="col-md-5">
                             <div class="gal-wrap">
@@ -140,94 +167,67 @@
 
                             <div style="" class="tab-pane fade" id="mini-three">
                                 <div class="col-md-12">
-                                    <h4 class="uppercase space35">3 Reviews for Shaving Knives</h4>
+                                    <h4 class="uppercase space35">3 Reviews for
+                                        <?php echo substr($prodr['name'], 0, 30); ?>
+                                    </h4>
                                     <ul class="comment-list">
+                                    <?php
+                                        $selrevsql = "SELECT u.firstname, u.lastname, r.`timestamp`, r.review FROM reviews r JOIN usersmeta u WHERE r.uid=u.uid AND r.pid=1";
+                                        $selrevres = mysqli_query($connection, $selrevsql);
+                                        while($selrevr = mysqli_fetch_assoc($selrevres)){
+                                    ?>
                                         <li>
                                             <a class="pull-left" href="#"><img class="comment-avatar" src="images/quote/1.jpg"
                                                     alt="" height="50" width="50"></a>
                                             <div class="comment-meta">
-                                                <a href="#">John Doe</a>
+                                                <a href="#"><?php echo $selrevr['firstname'] ." ". $selrevr['lastname']; ?></a>
                                                 <span>
-                                                    <em>Feb 17, 2015, at 11:34</em>
+                                                    <em><?php echo $selrevr['timestamp']; ?></em>
                                                 </span>
                                             </div>
-                                            <div class="rating2">
+                                            <!-- <div class="rating2">
                                                 <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
-                                            </div>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                                auctor sit amet urna nec tempor. Nullam pellentesque in orci in
-                                                luctus. Sed convallis tempor tellus a faucibus. Suspendisse et
-                                                quam eu velit commodo tempus.
-                                            </p>
+                                            </div> -->
+                                            <p><?php echo $selrevr['review']; ?></p>
                                         </li>
-                                        <li>
-                                            <a class="pull-left" href="#"><img class="comment-avatar" src="images/quote/2.jpg"
-                                                    alt="" height="50" width="50"></a>
-                                            <div class="comment-meta">
-                                                <a href="#">Rebecca</a>
-                                                <span>
-                                                    <em>March 08, 2015, at 03:34</em>
-                                                </span>
-                                            </div>
-                                            <div class="rating2">
-                                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
-                                            </div>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                                auctor sit amet urna nec tempor. Nullam pellentesque in orci in
-                                                luctus. Sed convallis tempor tellus a faucibus. Suspendisse et
-                                                quam eu velit commodo tempus.
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <a class="pull-left" href="#"><img class="comment-avatar" src="images/quote/1.jpg"
-                                                    alt="" height="50" width="50"></a>
-                                            <div class="comment-meta">
-                                                <a href="#">Antony Doe</a>
-                                                <span>
-                                                    <em>June 11, 2015, at 07:34</em>
-                                                </span>
-                                            </div>
-                                            <div class="rating2">
-                                                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
-                                            </div>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                                auctor sit amet urna nec tempor. Nullam pellentesque in orci in
-                                                luctus. Sed convallis tempor tellus a faucibus. Suspendisse et
-                                                quam eu velit commodo tempus.
-                                            </p>
-                                        </li>
+                                    <?php } ?>
                                     </ul>
                                     <h4 class="uppercase space20">Add a review</h4>
-                                    <form id="form" class="review-form">
+
+                                    <form id="form" class="review-form" method="POST">
+                                        <?php
+                                            $usersql = "SELECT u.email, u1.firstname, u1.lastname FROM users u JOIN usersmeta u1 WHERE u.id=u1.uid AND u.id=$uid";
+                                            $userres = mysqli_query($connection, $usersql);
+                                            $userr = mysqli_fetch_assoc($userres);
+                                        ?>
                                         <div class="row">
                                             <div class="col-md-6 space20">
                                                 <input name="name" class="input-md form-control" placeholder="Name *"
-                                                    maxlength="100" required="" type="text">
+                                                    maxlength="100" required="" type="text" value="<?php echo $userr['firstname'] ." ". $userr['lastname']; ?>" disabled>
                                             </div>
                                             <div class="col-md-6 space20">
                                                 <input name="email" class="input-md form-control" placeholder="Email *"
-                                                    maxlength="100" required="" type="email">
+                                                    maxlength="100" required="" type="email" value="<?php echo $userr['email']; ?>"
+                                                    disabled>
                                             </div>
                                         </div>
-                                        <div class="space20">
+                                        <!-- <div class="space20">
                                             <span>Your Ratings</span>
                                             <div class="clearfix"></div>
                                             <div class="rating3">
                                                 <span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span><span>&#9734;</span>
                                             </div>
                                             <div class="clearfix space20"></div>
-                                        </div>
+                                        </div> -->
                                         <div class="space20">
-                                            <textarea name="text" id="text" class="input-md form-control" rows="6"
+                                            <textarea name="review" id="text" class="input-md form-control" rows="6"
                                                 placeholder="Add review.." maxlength="400"></textarea>
                                         </div>
                                         <button type="submit" class="button btn-small">
                                             Submit Review
                                         </button>
                                     </form>
+
                                 </div>
                                 <div class="clearfix space30"></div>
                             </div>
