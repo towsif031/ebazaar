@@ -167,12 +167,17 @@
 
                             <div style="" class="tab-pane fade" id="mini-three">
                                 <div class="col-md-12">
-                                    <h4 class="uppercase space35">3 Reviews for
+                                <?php
+                                    $revcountsql = "SELECT count(*) AS count FROM reviews r WHERE r.pid=$id";
+                                    $revcountres = mysqli_query($connection, $revcountsql);
+                                    $revcountr = mysqli_fetch_assoc($revcountres);
+                                ?>
+                                    <h4 class="uppercase space35"><?php echo $revcountr['count']; ?> Reviews for
                                         <?php echo substr($prodr['name'], 0, 30); ?>
                                     </h4>
                                     <ul class="comment-list">
                                     <?php
-                                        $selrevsql = "SELECT u.firstname, u.lastname, r.`timestamp`, r.review FROM reviews r JOIN usersmeta u WHERE r.uid=u.uid AND r.pid=1";
+                                        $selrevsql = "SELECT u.firstname, u.lastname, r.`timestamp`, r.review FROM reviews r JOIN usersmeta u WHERE r.uid=u.uid AND r.pid=$id";
                                         $selrevres = mysqli_query($connection, $selrevsql);
                                         while($selrevr = mysqli_fetch_assoc($selrevres)){
                                     ?>
@@ -192,6 +197,14 @@
                                         </li>
                                     <?php } ?>
                                     </ul>
+                                    <?php
+                                        $chkrevsql = "SELECT count(*) reviewcount FROM reviews r WHERE r.uid=$uid";
+                                        $chkrevres = mysqli_query($connection, $chkrevsql);
+                                        $chkrevr = mysqli_fetch_assoc($chkrevres);
+                                        if($chkrevr['reviewcount'] >= 1){
+                                            echo "<h4 class='uppercase space20'>You have already reviewed this product.</h4>";
+                                        }else{
+                                    ?>
                                     <h4 class="uppercase space20">Add a review</h4>
 
                                     <form id="form" class="review-form" method="POST">
@@ -227,6 +240,7 @@
                                             Submit Review
                                         </button>
                                     </form>
+                                    <?php } ?>
 
                                 </div>
                                 <div class="clearfix space30"></div>
