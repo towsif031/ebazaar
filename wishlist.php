@@ -1,0 +1,65 @@
+<?php
+    ob_start();
+    session_start();
+    require_once "config/connect.php"; 
+
+    if(!isset($_SESSION['customer']) & empty($_SESSION['customer'])){
+        header('location: login.php');
+    }
+    include 'inc/header.php';
+    include 'inc/nav.php';
+
+    $uid = $_SESSION['customerid'];
+    $cart = $_SESSION['cart'];
+?>
+
+<!-- SHOP CONTENT -->
+<section id="content">
+    <div class="content-blog content-account">
+        <div class="container">
+            <div class="row">
+                <div class="page_header text-center">
+                    <h2>My Wishlist</h2>
+                </div>
+                <div class="col-md-12">
+                    <h3>Wishlisted Products</h3>
+                    <br>
+                    <table class="cart-table account-table table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Added On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $wishsql = "SELECT p.id, p.name, p.price , w.`timestamp` FROM wishlist w JOIN products p WHERE w.pid=p.id AND w.uid=$uid";
+                                $wishres = mysqli_query($connection, $wishsql);
+                                while($wishr = mysqli_fetch_assoc($wishres)){
+                            ?>
+                            <tr>
+                                <td>
+                                    <a href="single.php?id=<?php echo $wishr['id']; ?>"><?php echo $wishr['name']; ?></a>
+                                </td>
+                                <td>
+                                    <?php echo $wishr['price']; ?> BDT
+                                </td>
+                                <td>
+                                    <?php echo $wishr['timestamp']; ?>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?php include 'inc/footer.php' ?>
