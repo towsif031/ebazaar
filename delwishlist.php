@@ -8,8 +8,8 @@
     }
 
     if(isset($_GET['id']) & !empty($_GET['id'])){
-        $pid = $_GET['id'];
-        $sql = "INSERT INTO wishlist (pid, uid) VALUES ($pid, $uid)";
+        $wid = $_GET['id'];
+        $sql = "DELETE FROM wishlist WHERE id=$wid";
         $res = mysqli_query($connection, $sql);
         if($res){
             header('location: wishlist.php');

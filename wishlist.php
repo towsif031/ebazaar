@@ -30,23 +30,29 @@
                                 <th>Product Name</th>
                                 <th>Price</th>
                                 <th>Added On</th>
+                                <th>Operations</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                                $wishsql = "SELECT p.id, p.name, p.price , w.`timestamp` FROM wishlist w JOIN products p WHERE w.pid=p.id AND w.uid=$uid";
+                                $wishsql = "SELECT p.id AS pid, p.name, p.price , w.id AS wid, w.`timestamp` FROM wishlist w JOIN products p WHERE w.pid=p.id AND w.uid=$uid";
                                 $wishres = mysqli_query($connection, $wishsql);
                                 while($wishr = mysqli_fetch_assoc($wishres)){
                             ?>
                             <tr>
                                 <td>
-                                    <a href="single.php?id=<?php echo $wishr['id']; ?>"><?php echo $wishr['name']; ?></a>
+                                    <a href="single.php?id=<?php echo $wishr['pid']; ?>">
+                                        <?php echo $wishr['name']; ?></a>
                                 </td>
                                 <td>
                                     <?php echo $wishr['price']; ?> BDT
                                 </td>
                                 <td>
                                     <?php echo $wishr['timestamp']; ?>
+                                </td>
+                                <td>
+                                    <a href="delwishlist.php?id=<?php echo $wishr['wid']; ?>">
+                                        Delete</a>
                                 </td>
                             </tr>
                             <?php } ?>
