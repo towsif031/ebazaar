@@ -205,10 +205,12 @@
                                     </ul>
                                     <?php
                                     if(isset($uid)){
-                                        $chkrevsql = "SELECT count(*) reviewcount FROM reviews r WHERE r.uid=$uid";
+                                        // $chkrevsql = "SELECT count(*) reviewcount FROM reviews r WHERE r.uid=$uid";
+                                        $chkrevsql = "SELECT * FROM reviews WHERE uid=$uid AND pid=$id";    // checking if user had reviewed the item before.
                                         $chkrevres = mysqli_query($connection, $chkrevsql);
                                         $chkrevr = mysqli_fetch_assoc($chkrevres);
-                                        if($chkrevr['reviewcount'] >= 1){
+                                        // if($chkrevr['reviewcount'] >= 1){
+                                        if($chkrevr){   // if there is any result users cannot review it again.
                                             echo "<h4 class='uppercase space20'>You have already reviewed this product.</h4>";
                                         }else{
                                     ?>
