@@ -40,7 +40,7 @@ if(isset($_POST) & !empty($_POST)){
 			<form method="post">
 				<div class="form-group">
 					<label for="productname">Category Name</label>
-					<input type="text" class="form-control" name="categoryname" id="categoryname" placeholder="Category Name">
+					<input type="text" class="form-control" name="categoryname" id="categoryname" placeholder="category name" required>
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>

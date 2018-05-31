@@ -18,35 +18,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="page_header text-center">
-					<h2>Shop</h2>
-					<p>You can order products from here</p>
+					<h2>Shop : Admin</h2>
+					<p>Wellcome To ADMIN panel</p>
 				</div>
 				<div class="col-md-12">
 					<div class="row">
-						<div id="shop-mason" class="shop-mason-4col">
-							<div class="sm-item isotope-item">
-								<div class="product">
-									<div class="product-thumb">
-										<img src="images/shop/1.jpg" class="img-responsive" alt="">
-										<div class="product-overlay">
-											<span>
-												<a href="./shop-single-full.html" class="fa fa-link"></a>
-												<a href="./shop-single-full.html" class="fa fa-shopping-cart"></a>
-											</span>
-										</div>
-									</div>
-									<div class="rating">
-										<span class="fa fa-star act"></span>
-										<span class="fa fa-star act"></span>
-										<span class="fa fa-star act"></span>
-										<span class="fa fa-star act"></span>
-										<span class="fa fa-star act"></span>
-									</div>
-									<h2 class="product-title"><a href="#">Shave Knives</a></h2>
-									<div class="product-price">$79.00<span>$200.00</span></div>
-								</div>
-							</div>
-						</div>
 					</div>
 					<div class="clearfix"></div>
 					<!-- Pagination -->

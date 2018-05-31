@@ -83,15 +83,15 @@ if(isset($_POST) & !empty($_POST)){
 				<div class="form-group">
 					<input type="hidden" name="filepath" value="<?php echo $r['thumb']; ?>">
 					<label for="productname">Product Name</label>
-					<input type="text" class="form-control" name="productname" id="productname" placeholder="Product Name" value="<?php echo $r['name']; ?>">
+					<input type="text" class="form-control" name="productname" id="productname" placeholder="product name" value="<?php echo $r['name']; ?>" required>
 				</div>
 				<div class="form-group">
 					<label for="productdescription">Product Description</label>
-					<textarea class="form-control" name="productdescription" rows="3"><?php echo $r['description']; ?></textarea>
+					<textarea class="form-control" name="productdescription" rows="3" placeholder="add product description" required><?php echo $r['description']; ?></textarea>
 				</div>
 				<div class="form-group">
 					<label for="productcategory">Product Category</label>
-					<select class="form-control" id="productcategory" name="productcategory">
+					<select class="form-control" id="productcategory" name="productcategory" required>
 						<option value="">---Select Category---</option>
 						<?php
 							$catsql = "SELECT * FROM category";
@@ -104,7 +104,7 @@ if(isset($_POST) & !empty($_POST)){
 				</div>
 				<div class="form-group">
 					<label for="productprice">Product Price</label>
-					<input type="text" class="form-control" name="productprice" id="productprice" placeholder="Product Price" value="<?php echo $r['price']; ?>">
+					<input type="text" class="form-control" name="productprice" id="productprice" placeholder="product price" value="<?php echo $r['price']; ?>" required>
 				</div>
 				<div class="form-group">
 					<label for="productimage">Product Image</label>

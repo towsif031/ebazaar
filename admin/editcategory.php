@@ -53,7 +53,7 @@ if(isset($_POST) & !empty($_POST)){
                         $r = mysqli_fetch_assoc($res);
 				    ?>
                     <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-					<input type="text" class="form-control" name="categoryname" id="categoryname" placeholder="Category Name" value="<?php echo $r['name']; ?>">
+					<input type="text" class="form-control" name="categoryname" id="categoryname" placeholder="Category Name" value="<?php echo $r['name']; ?>" required>
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form>

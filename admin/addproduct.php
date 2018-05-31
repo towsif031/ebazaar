@@ -65,16 +65,16 @@ if(isset($_POST) & !empty($_POST)){
 			<form method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label for="Productname">Product Name</label>
-					<input type="text" class="form-control" name="productname" id="Productname" placeholder="Product Name">
+					<input type="text" class="form-control" name="productname" id="Productname" placeholder="product name" required>
 				</div>
 				<div class="form-group">
 					<label for="productdescription">Product Description</label>
-					<textarea class="form-control" name="productdescription" rows="3"></textarea>
+					<textarea class="form-control" name="productdescription" rows="3" placeholder="add product description" required></textarea>
 				</div>
 				<div class="form-group">
 					<label for="productcategory">Product Category</label>
-					<select class="form-control" id="productcategory" name="productcategory">
-						<option value="">---SELECT CATEGORY---</option>
+					<select class="form-control" id="productcategory" name="productcategory" required>
+						<option value="">---Select Category---</option>
 						<?php
 						$sql = "SELECT * FROM category";
 						$res = mysqli_query($connection, $sql);
@@ -86,7 +86,7 @@ if(isset($_POST) & !empty($_POST)){
 				</div>
 				<div class="form-group">
 					<label for="productprice">Product Price</label>
-					<input type="text" class="form-control" name="productprice" id="productprice" placeholder="Product Price">
+					<input type="text" class="form-control" name="productprice" id="productprice" placeholder="product price" required>
 				</div>
 				<div class="form-group">
 					<label for="productimage">Product Image</label>
