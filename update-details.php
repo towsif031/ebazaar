@@ -53,8 +53,8 @@
                             <h3 class="uppercase">Update Account Details</h3>
                             <div class="space30"></div>
                             <label class="">Country </label>
-                            <select name="country" class="form-control">
-                                <option value="">Select Country</option>
+                            <select name="country" class="form-control" required>
+                                <option value="">select country</option>
                                 <option value="AX">Aland Islands</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AL">Albania</option>
@@ -79,48 +79,48 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>First Name </label>
-                                    <input name="fname" class="form-control" placeholder="" value="<?php if(!empty($r['firstname'])){ echo $r['firstname']; }elseif(isset($fname)){ echo $fname; } ?>"
-                                        type="text">
+                                    <input name="fname" class="form-control" placeholder="first name" value="<?php if(!empty($r['firstname'])){ echo $r['firstname']; }elseif(isset($fname)){ echo $fname; } ?>"
+                                        type="text" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label>Last Name </label>
-                                    <input name="lname" class="form-control" placeholder="" value="<?php if(!empty($r['lastname'])){ echo $r['lastname']; }elseif(isset($lname)){ echo $lname; } ?>"
-                                        type="text">
+                                    <input name="lname" class="form-control" placeholder="last name" value="<?php if(!empty($r['lastname'])){ echo $r['lastname']; }elseif(isset($lname)){ echo $lname; } ?>"
+                                        type="text" required>
                                 </div>
                             </div>
                             <div class="clearfix space20"></div>
                             <label>Company Name</label>
-                            <input name="company" class="form-control" placeholder="" value="<?php if(!empty($r['company'])){ echo $r['company']; }elseif(isset($company)){ echo $company; } ?>"
+                            <input name="company" class="form-control" placeholder="company name (optional)" value="<?php if(!empty($r['company'])){ echo $r['company']; }elseif(isset($company)){ echo $company; } ?>"
                                 type="text">
                             <div class="clearfix space20"></div>
                             <label>Address </label>
-                            <input name="address1" class="form-control" placeholder="Street address" value="<?php if(!empty($r['address1'])){ echo $r['address1']; }elseif(isset($address1)){ echo $address1; } ?>"
-                                type="text">
+                            <input name="address1" class="form-control" placeholder="street address" value="<?php if(!empty($r['address1'])){ echo $r['address1']; }elseif(isset($address1)){ echo $address1; } ?>"
+                                type="text" required>
                             <div class="clearfix space20"></div>
-                            <input name="address2" class="form-control" placeholder="Apartment, suite, unit etc. (optional)"
+                            <input name="address2" class="form-control" placeholder="apartment, suite, unit etc. (optional)"
                                 value="<?php if(!empty($r['address2'])){ echo $r['address2']; }elseif(isset($address2)){ echo $address2; } ?>"
                                 type="text">
                             <div class="clearfix space20"></div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <label>City</label>
-                                    <input name="city" class="form-control" placeholder="City" value="<?php if(!empty($r['city'])){ echo $r['city']; }elseif(isset($city)){ echo $city; } ?>"
-                                        type="text">
+                                    <input name="city" class="form-control" placeholder="city" value="<?php if(!empty($r['city'])){ echo $r['city']; }elseif(isset($city)){ echo $city; } ?>"
+                                        type="text" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label>State</label>
                                     <input name="state" class="form-control" value="<?php if(!empty($r['state'])){ echo $r['state']; }elseif(isset($state)){ echo $state; } ?>"
-                                        placeholder="State" type="text">
+                                        placeholder="state" type="text" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label>Postcode </label>
-                                    <input name="zip" class="form-control" placeholder="Postcode / Zip" value="<?php if(!empty($r['zip'])){ echo $r['zip']; }elseif(isset($zip)){ echo $zip; } ?>"
-                                        type="text">
+                                    <input name="zip" class="form-control" placeholder="postcode / zip" value="<?php if(!empty($r['zip'])){ echo $r['zip']; }elseif(isset($zip)){ echo $zip; } ?>"
+                                        type="text" required>
                                 </div>
                             </div>
                             <div class="clearfix space20"></div>
                             <label>Phone </label>
-                            <input name="phone" class="form-control" id="billing_phone" placeholder="" value="<?php if(!empty($r['phone'])){ echo $r['phone']; }elseif(isset($phone)){ echo $phone; } ?>" type="text">
+                            <input name="phone" class="form-control" id="billing_phone" placeholder="phone number" value="<?php if(!empty($r['phone'])){ echo $r['phone']; }elseif(isset($phone)){ echo $phone; } ?>" type="text" required>
                                 
                             <div class="space30"></div>
                             <input type="submit" class="button btn-lg" value="Update">
