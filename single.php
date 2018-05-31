@@ -91,6 +91,8 @@
                                 </div>
                             </form>
 
+                            <a href="addtowishlist.php?id=<?php echo $prodr['id']; ?>">Add to Wishlist</a>
+
                             <div class="product-meta">
                                 <span>Categories:
                                     <?php
