@@ -35,9 +35,11 @@
 			<a href="#">Contact</a>
 		</li>
 	</ul>
+
 	<div class="header-xtra">
 		<?php
-			$cart = $_SESSION['cart'];
+			if(isset($_SESSION['cart'])){
+				$cart = $_SESSION['cart'];
 		?>
 		<div class="s-cart">
 			<div class="sc-ico"><i class="fa fa-shopping-cart"></i><em>
@@ -83,6 +85,8 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
+
 		<div class="s-search">
 			<div class="ss-ico"><i class="fa fa-search"></i></div>
 			<div class="search-block">
@@ -95,6 +99,7 @@
 			</div>
 		</div>
 	</div>
+
 </div>
 </div>
 </header>
