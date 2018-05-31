@@ -38,8 +38,10 @@
 
 	<div class="header-xtra">
 		<?php
+			$cart=[ ];
 			if(isset($_SESSION['cart'])){
 				$cart = $_SESSION['cart'];
+			}
 		?>
 		<div class="s-cart">
 			<div class="sc-ico"><i class="fa fa-shopping-cart"></i><em>
@@ -85,7 +87,7 @@
 				</div>
 			</div>
 		</div>
-		<?php } ?>
+		<?php //} ?>
 
 		<div class="s-search">
 			<div class="ss-ico"><i class="fa fa-search"></i></div>

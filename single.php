@@ -13,7 +13,10 @@
         header('location: index.php');
     }
 
-    $uid = $_SESSION['customerid'];
+    // $uid = [];
+    if(isset($_SESSION['customerid'])){ // if user session exists
+        $uid = $_SESSION['customerid'];
+    }
 
     if(isset($_POST) & !empty($_POST)){
         $review = filter_var($_POST['review'], FILTER_SANITIZE_STRING);
@@ -200,6 +203,7 @@
                                     <?php } ?>
                                     </ul>
                                     <?php
+                                    if(isset($uid)){
                                         $chkrevsql = "SELECT count(*) reviewcount FROM reviews r WHERE r.uid=$uid";
                                         $chkrevres = mysqli_query($connection, $chkrevsql);
                                         $chkrevr = mysqli_fetch_assoc($chkrevres);
@@ -242,7 +246,7 @@
                                             Submit Review
                                         </button>
                                     </form>
-                                    <?php } ?>
+                                    <?php } } ?>
 
                                 </div>
                                 <div class="clearfix space30"></div>
