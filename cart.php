@@ -3,7 +3,11 @@
     require_once "config/connect.php";
     include 'inc/header.php';
     include 'inc/nav.php';
-    $cart = $_SESSION['cart'];
+    // $cart = $_SESSION['cart'];
+    $cart=[ ];
+    if(isset($_SESSION['cart'])){
+        $cart = $_SESSION['cart'];
+    }
 ?>
 
 <!-- SHOP CONTENT -->

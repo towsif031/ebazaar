@@ -49,7 +49,7 @@
                                         <div class="form-group">
                                             <div class="col-md-12">
                                                 <label>E-mail Address</label>
-                                                <input type="email" name="email" value="" class="form-control">
+                                                <input type="email" name="email" value="" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +59,7 @@
                                             <div class="col-md-12">
                                                 <a class="pull-right" href="#">(Lost Password?)</a>
                                                 <label>Password</label>
-                                                <input type="password" name="password" value="" class="form-control">
+                                                <input type="password" name="password" value="" class="form-control" required>
                                             </div>
                                         </div>
                                     </div>

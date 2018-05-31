@@ -87,8 +87,8 @@
                             <div class="space30"></div>
                             
                             <label class="">Order Status</label>
-                            <select name="status" class="form-control">
-                                <option value="">Select Status</option>
+                            <select name="status" class="form-control" required>
+                                <option value="">---select status---</option>
                                 <option value="In Progress">In Progress</option>
                                 <option value="Dispatched">Dispatched</option>
                                 <option value="Delivered">Delivered</option>
@@ -96,7 +96,7 @@
 
                             <div class="clearfix space20"></div>
                             <label>Message :</label>
-                            <textarea class="form-control" name="message" cols="10"></textarea>
+                            <textarea class="form-control" name="message" cols="10" required></textarea>
                             
                             <input type="hidden" name="orderid" value="<?php echo $_GET['id']; ?>">
                             <div class="space30"></div>

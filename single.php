@@ -4,6 +4,7 @@
     require_once "config/connect.php";
     include 'inc/header.php';
     include 'inc/nav.php';
+    
     if(isset($_GET['id']) & !empty($_GET['id'])){
         $id = $_GET['id'];
         $prodsql = "SELECT * FROM products WHERE id=$id";
@@ -240,7 +241,7 @@
                                         </div> -->
                                         <div class="space20">
                                             <textarea name="review" id="text" class="input-md form-control" rows="6"
-                                                placeholder="Add review.." maxlength="400"></textarea>
+                                                placeholder="Add review.." maxlength="400" required></textarea>
                                         </div>
                                         <button type="submit" class="button btn-small">
                                             Submit Review

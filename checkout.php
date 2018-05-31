@@ -11,7 +11,11 @@
     include 'inc/nav.php';
 
     $uid = $_SESSION['customerid'];
-    $cart = $_SESSION['cart'];
+    // $cart = $_SESSION['cart'];
+    $cart=[ ];
+    if(isset($_SESSION['cart'])){
+        $cart = $_SESSION['cart'];
+    }
 
     if(isset($_POST) & !empty($_POST)){
         if($_POST['agree'] == true){
