@@ -11,8 +11,8 @@
         <div class="container">
             <div class="row">
                 <div class="page_header text-center">
-                    <h2>Shop - Account</h2>
-                    <p>Tagline Here</p>
+                    <!-- <h2>User Account</h2> -->
+                    <p>Customer Area</p>
                 </div>
                 <div class="col-md-12">
                     <div class="row shop-login">

@@ -38,8 +38,8 @@
         <div class="container">
             <div class="row">
                 <div class="page_header text-center">
-                    <h2>Shop</h2>
-                    <p>Get the best kit for smooth shave</p>
+                    <!-- <h2>Product Details</h2> -->
+                    <!-- <p>Product Details</p> -->
                 </div>
 
                 <div class="col-md-10 col-md-offset-1">

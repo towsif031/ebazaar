@@ -1,11 +1,13 @@
-<div class="menu-wrap">
+<div class="menu-wrap" style="background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
 	<div id="mobnav-btn">Menu <i class="fa fa-bars"></i></div>
 	<ul class="sf-menu">
 		<li>
 			<a href="http://localhost/eshop/index.php">Home</a>
 		</li>
 		<li>
-			<a href="#">Shop</a>
+			<a href="#">Products</a>
 			<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
 			<ul>
 

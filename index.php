@@ -8,14 +8,14 @@
 <div class="close-btn fa fa-times"></div>
 
 <!-- SHOP CONTENT -->
-<section id="content">
+<section id="content"  style="background: #ffffff">
 	<div class="content-blog">
 		<div class="container">
 			<div class="row">
-				<div class="page_header text-center">
+				<!-- <div class="page_header text-center">
 					<h2>Shop</h2>
 					<p>You can order products from here</p>
-				</div>
+				</div> -->
 				<div class="col-md-12">
 					<div class="row">
 						<div id="shop-mason" class="shop-mason-4col">
@@ -29,7 +29,7 @@
 								$res = mysqli_query($connection, $sql);
 								while($r = mysqli_fetch_assoc($res)){
 							?>
-							<div class="sm-item isotope-item">
+							<div class="sm-item isotope-item" style="box-sizing:border-box;	width:280px; height:400px; background-color: #fff;">
 								<div class="product">
 									<div class="product-thumb">
 										<img src="admin/<?php echo $r['thumb']; ?>" class="img-responsive" alt="">
@@ -47,8 +47,10 @@
 										<span class="fa fa-star act"></span>
 										<span class="fa fa-star act"></span>
 									</div>
-									<h2 class="product-title"><a href="single.php?id=<?php echo $r['id']; ?>"><?php echo $r['name']; ?></a></h2>
-									<div class="product-price"><?php echo $r['price']; ?> BDT</div>
+									<h2 class="product-title"><a href="single.php?id=<?php echo $r['id']; ?>">
+											<?php echo $r['name']; ?></a></h2>
+									<div class="product-price">
+										<?php echo $r['price']; ?> BDT</div>
 								</div>
 							</div>
 							<?php } ?>

@@ -28,7 +28,10 @@
                 <div class="col-md-12">
                     <h3>Recent Orders</h3>
                     <br>
-                    <table class="cart-table account-table table table-bordered">
+                    <table class="cart-table account-table table table-bordered" style="background: #ADA996;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
                         <thead>
                             <tr>
                                 <th>Order</th>
@@ -77,12 +80,12 @@
                     <br>
 
                     <div class="ma-address">
-                        <h3>My Addresses</h3>
-                        <p>The following addresses will be used on the checkout page by default.</p>
+                        <h3>My Account Details</h3>
+                        <p>The following information will be used on the checkout page by default.</p>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <h4>My Address <a href="update-details.php">Edit</a></h4>
+                                <h4>Details <a href="update-details.php">Edit</a></h4>
 
                                 <?php
                                     $csql = "SELECT u1.firstname, u1.lastname, u1.address1, u1.address2, u1.city, u1.state, u1.country, u1.company, u.email, u1.phone, u1.zip FROM users u JOIN usersmeta u1 WHERE u.id=u1.uid AND u.id=$uid";
