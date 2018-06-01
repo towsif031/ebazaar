@@ -1,15 +1,17 @@
-<div class="clearfix space70"></div>
+<div class="clearfix space60"></div>
 <!-- FOOTER -->
-<footer id="footer2">
+<footer id="footer2" style="background: #0F2027;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
 
-	<div class="footer-bottom container">
+	<div class="footer-bottom container" style="text-align: center;">
 		<div class="row">
-			<div class="col-md-6">
+			<!-- <div class="col-md-6"> -->
 				<p>&copy; Copyright 2018. <a href="http://www.towsif.me" target="_blank">Towsif Ahmed Omi</a></p>
-			</div>
-			<div class="col-md-6">
+			<!-- </div> -->
+			<!-- <div class="col-md-6">
 
-			</div>
+			</div> -->
 		</div>
 	</div>
 </footer>

@@ -1,4 +1,6 @@
-<div class="menu-wrap">
+<div class="menu-wrap" style="background: #44A08D;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #093637, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #093637, #44A08D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
 	<div id="mobnav-btn">Menu <i class="fa fa-bars"></i></div>
 	<ul class="sf-menu">
 		<li>
