@@ -62,8 +62,7 @@ background: linear-gradient(to bottom, #093637, #44A08D); /* W3C, IE 10+/ Edge, 
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-xs-5 logo">
-						<a href="http://[::1]/cishop/admin"><img src="http://[::1]/cishop/assets/images/logo.png" class="img-responsive"
-							 alt="" /></a>
+						<a href="http://localhost/eshop/admin"><img src="../assets/images/logo/ebazaar_logo.svg" class="img-responsive" alt="ebazaar_logo" /></a>
 					</div>
 					<div class="col-md-9 col-xs-7">
 						<div class="top-bar"></div>
