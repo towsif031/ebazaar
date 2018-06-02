@@ -24,15 +24,28 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 
 			</ul>
 		</li>
+		<?php
+			if(isset($_SESSION['customer']) & !empty($_SESSION['customer'])){
+		?>
 		<li>
 			<a href="#">My Account</a>
 			<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
 			<ul>
 				<li><a href="http://localhost/eshop/my-account.php">My Orders</a></li>
+				<li><a href="http://localhost/eshop/wishlist.php">My Wishlist</a></li>
 				<li><a href="http://localhost/eshop/update-details.php">Update Details</a></li>
 				<li><a href="http://localhost/eshop/logout.php">Logout</a></li>
 			</ul>
 		</li>
+		<?php }else{ ?>
+		<li>
+			<a href="#">Account</a>
+			<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
+			<ul>
+				<li><a href="http://localhost/eshop/login.php" style="text-align: center; font-size: 14px;">Login</a></li>
+			</ul>
+		</li>
+		<?php } ?>
 		<li>
 			<a href="#">Contact</a>
 		</li>
@@ -54,7 +67,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 						<?php echo count($cart); ?> item(s)</em> in your shopping cart</small>
 				<br>
 				<br>
-				
+
 				<?php
                     // print_r($cart);
                     $total = 0;
@@ -68,8 +81,11 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 				<div class="ci-item">
 					<img src="admin/<?php echo $navcartr['thumb']; ?>" width="70" alt="" />
 					<div class="ci-item-info">
-						<h5><a href="single.php?id=<?php echo $navcartr['id']; ?>"><?php echo substr($navcartr['name'], 0, 20); ?></a></h5>
-						<p><?php echo $value['quantity']; ?> x <?php echo $navcartr['price']; ?> BDT</p>
+						<h5><a href="single.php?id=<?php echo $navcartr['id']; ?>">
+								<?php echo substr($navcartr['name'], 0, 20); ?></a></h5>
+						<p>
+							<?php echo $value['quantity']; ?> x
+							<?php echo $navcartr['price']; ?> BDT</p>
 						<div class="ci-edit">
 							<!-- <a href="#" class="edit fa fa-edit"></a> -->
 							<a href="delcart.php?id=<?php echo $key; ?>" class="edit fa fa-trash"></a>
@@ -82,7 +98,8 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
                     }
                 ?>
 
-				<div class="ci-total">Subtotal: <?php echo $total; ?> BDT</div>
+				<div class="ci-total">Subtotal:
+					<?php echo $total; ?> BDT</div>
 				<div class="cart-btn">
 					<a href="cart.php">View Cart</a>
 					<a href="checkout.php">Checkout</a>

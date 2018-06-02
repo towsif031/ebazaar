@@ -244,29 +244,29 @@
                             <input name="payment" id="radio1" class="css-checkbox" type="radio" value="cod"><span>Cash
                                 On Delivery</span>
                             <div class="space20"></div>
-                            <p>Make your payment directly into our bank account. Please use your Order ID as the
-                                payment reference. Your order won't be shipped until the funds have cleared in our
-                                account.</p>
+                            <p>Make your payment directly into our bank account.<br>
+                            Please use your Order ID as the payment reference.<br>
+                            Your order won't be shipped until we get the payment in our account.</p>
                         </div>
                         <div class="col-md-4">
-                            <input name="payment" id="radio2" class="css-checkbox" type="radio" value="cheque"><span>Cheque
-                                Payment</span>
+                            <input name="payment" id="radio2" class="css-checkbox" type="radio" value="cheque"><span>Cheque Payment</span>
                             <div class="space20"></div>
-                            <p>Please send your cheque to BLVCK Fashion House, Oatland Rood, UK, LS71JR</p>
+                            <p>Please send your cheque to<br>
+                            677, East Dholairpar, Donia Road,<br>
+                            Dhaka-1236</p>
                         </div>
                         <div class="col-md-4">
                             <input name="payment" id="radio3" class="css-checkbox" type="radio" value="paypal"><span>Paypal</span>
                             <div class="space20"></div>
-                            <p>Pay via PayPal; you can pay with your credit card if you don't have a PayPal account</p>
+                            <p>Pay via PayPal;<br>
+                            You can pay with your credit card if you don't have a PayPal account</p>
                         </div>
 
                     </div>
                     <div class="space30"></div>
 
-                    <input name="agree" id="checkboxG2" class="css-checkbox" type="checkbox" value="true"><span>I've
-                        read
-                        and
-                        accept the <a href="#">terms &amp; conditions</a></span>
+                    <input name="agree" id="checkboxG2" class="css-checkbox" type="checkbox" value="true">
+                    <span>I've read and accept the <a href="#">terms &amp; conditions</a></span>
 
                     <div class="space30"></div>
                     <input type="submit" class="button btn-lg" value="Pay Now">
