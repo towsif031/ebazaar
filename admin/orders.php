@@ -11,6 +11,9 @@ if(!isset($_SESSION['email']) & empty($_SESSION['email'])){
 
 <section id="content">
 	<div class="content-blog">
+		<div class="page_header text-center">
+			<h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 30px;">Admin - View Orders</h2>
+		</div>
 		<div class="container">
 			<table class="table table-striped">
 				<thead>
@@ -25,25 +28,40 @@ if(!isset($_SESSION['email']) & empty($_SESSION['email'])){
 					</tr>
 				</thead>
 				<tbody>
-				<?php				
+					<?php				
 					$sql = "SELECT o.id, o.totalprice, o.orderstatus, o.paymentmode, o.`timestamp`, u.firstname, u.lastname FROM orders o JOIN usersmeta u WHERE o.uid=u.uid AND o.orderstatus != 'Cancelled' ORDER BY o.id DESC";
 					$res = mysqli_query($connection, $sql);
 					while($r = mysqli_fetch_assoc($res)){
 				?>
 					<tr>
-						<th scope="row"><?php echo $r['id']; ?></th>
-						<td><?php echo $r['firstname'] ." ". $r['lastname']; ?></td>
-						<td><?php echo $r['totalprice']; ?></td>
-						<td><?php echo $r['orderstatus']; ?></td>
-						<td><?php echo $r['paymentmode']; ?></td>
-						<td><?php echo $r['timestamp']; ?></td>
+						<th scope="row">
+							<?php echo $r['id']; ?>
+						</th>
+						<td>
+							<?php echo $r['firstname'] ." ". $r['lastname']; ?>
+						</td>
+						<td>
+							<?php echo $r['totalprice']; ?>
+						</td>
+						<td>
+							<?php echo $r['orderstatus']; ?>
+						</td>
+						<td>
+							<?php echo $r['paymentmode']; ?>
+						</td>
+						<td>
+							<?php echo $r['timestamp']; ?>
+						</td>
 						<td><a href="order-process.php?id=<?php echo $r['id']; ?>">Process Order</a></td>
 					</tr>
-				<?php } ?>
+					<?php } ?>
 				</tbody>
 			</table>
 		</div>
 	</div>
 </section>
+
+<div class="clearfix space70"></div>
+<div class="clearfix space70"></div>
 
 <?php include 'inc/footer.php' ?>

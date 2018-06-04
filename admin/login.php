@@ -36,7 +36,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ESHOP Admin Login</title>
+    <title>ebazaar | Admin Login</title>
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,15 +82,13 @@
         <!-- SHOP CONTENT -->
         <section id="content" style="height:700px; background: #bdc3c7;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to top, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-">
+background: linear-gradient(to top, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */">
             <div class="content-blog">
                 <div class="container">
                     <div class="row">
-                        <div class="page_header text-center">
-                            <h2>Login</h2>
-                            <p style="color: #fff; font-size: 14px;">Admin Login</p>
+                        <div class="page_header text-center" style="margin-bottom:20px;">
+                            <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 40px;">Login</h2>
+                            <p style="color: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 14px;">as Admin</p>
                         </div>
                         <div class="col-md-12">
                             <div class="row shop-login">

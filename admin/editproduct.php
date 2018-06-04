@@ -61,6 +61,9 @@ if(isset($_POST) & !empty($_POST)){
 
 <section id="content">
 	<div class="content-blog">
+		<div class="page_header text-center" style="margin-bottom:20px;">
+			<h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 30px;">Edit Product details</h2>
+		</div>
 		<div class="container">
 			<?php
 				if(isset($smsg)){?>

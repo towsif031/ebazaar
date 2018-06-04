@@ -8,7 +8,7 @@ background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, 
 	<div class="footer-bottom container" style="text-align: center;">
 		<div class="row">
 			<!-- <div class="col-md-6"> -->
-				<p>&copy; Copyright 2018. <a href="http://www.towsif.me" target="_blank">Towsif Ahmed Omi</a></p>
+				<p>&copy; Copyright 2018. Developed by <a href="http://www.towsif.me" target="_blank">Towsif Ahmed Omi</a></p>
 			<!-- </div> -->
 			<!-- <div class="col-md-6">
 

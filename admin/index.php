@@ -18,7 +18,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="page_header text-center">
-					<h2>Shop : Admin</h2>
+					<h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 40px;">Ebazaar : Admin</h2>
 					<p>Wellcome To ADMIN panel</p>
 				</div>
 				<div class="col-md-12">
@@ -41,5 +41,7 @@
 		</div>
 	</div>
 </section>
+
+<div class="clearfix space70"></div>
 
 <?php include 'inc/footer.php' ?>

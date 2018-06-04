@@ -30,8 +30,7 @@
 <section id="content">
     <div class="content-blog">
         <div class="page_header text-center">
-            <h2>Admin - Order Processing</h2>
-            <!-- <p>Do you want to cancel your Order?</p> -->
+            <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 30px;">Admin - Order Processing</h2>
         </div>
 
         <form method="POST">
