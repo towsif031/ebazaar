@@ -38,7 +38,9 @@ background: linear-gradient(to bottom, #093637, #44A08D); /* W3C, IE 10+/ Edge, 
 			</ul>
 		</li>
 	</ul>
-	<div class="header-xtra">
+
+	<!-- Disabled search bar for admin -->
+	<!-- <div class="header-xtra">
 		<div class="s-search">
 			<div class="ss-ico"><i class="fa fa-search"></i></div>
 			<div class="search-block">
@@ -50,7 +52,7 @@ background: linear-gradient(to bottom, #093637, #44A08D); /* W3C, IE 10+/ Edge, 
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 </div>
 </header>

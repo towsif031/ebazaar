@@ -22,6 +22,77 @@
 	<link rel="shortcut icon" href="images/favicon.png">
 
 	<!-- CSS -->
+	<style>
+
+	/* Awesome Search Box */
+	.nav-search {
+		position: absolute;
+		display: inline-block;
+		margin-top: -75px;
+		margin-left: 20%;
+	}
+
+	.search-box {
+		position: relative;
+		/* position: absolute; */
+		/* top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%); */
+		/* background: #2f3640; */
+		background: #bdc3c7;
+		/* fallback for old browsers */
+		background: -webkit-linear-gradient(to left, #2c3e50, #bdc3c7);
+		/* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to left, #2c3e50, #bdc3c7);
+		/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+		height: 40px;
+		border-radius: 40px;
+		padding: 10px;
+	}
+
+	.search-box:hover>.search-txt {
+		width: 240px;
+		padding: 0 6px;
+	}
+
+	.search-box:hover>.search-btn {
+		background: #bdc3c7;
+		color: #bdc3c7;
+	}
+
+	.search-btn {
+		color: #2c3e50;
+		float: right;
+		width: 40px;
+		height: 40px;
+		margin-top: -10px;
+		margin-right: -10px;
+		border-radius: 50%;
+		background: #2c3e50;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition: 0.4s;
+		cursor: pointer;
+	}
+
+	.search-txt {
+		border: none;
+		background: none;
+		outline: none;
+		float: left;
+		padding-left: 10px;
+		color: black;
+		font-size: 16px;
+		transition: 0.4s;
+		line-height: 10px;
+		width: 240px;
+		font-weight: bold;
+	}
+	/* End ASBox */
+	</style>
+
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="js/isotope/isotope.css">

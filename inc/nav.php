@@ -52,6 +52,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 	</ul>
 
 	<div class="header-xtra">
+
 		<?php
 			$cart=[ ];
 			if(isset($_SESSION['cart'])){
@@ -108,7 +109,7 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 		</div>
 		<?php //} ?>
 
-		<div class="s-search">
+		<!-- <div class="s-search">
 			<div class="ss-ico"><i class="fa fa-search"></i></div>
 			<div class="search-block">
 				<div class="ssc-inner">
@@ -118,6 +119,26 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 					</form>
 				</div>
 			</div>
+		</div> -->
+
+		<!-- <div class="search-box">
+			<input class="search-txt" type="text" name="" placeholder="type to search..." />
+			<div class="search-btn">
+			<a href="#"><i class="fa fa-search"></i>
+			</div>
+			</a>
+		</div> -->
+
+
+	</div>
+
+	<div class="nav-search">
+		<div class="search-box">
+			<input class="search-txt" type="text" name="" placeholder="Search..." />
+			<div class="search-btn">
+				<a href="#"><i class="fa fa-search"></i>
+			</div>
+			</a>
 		</div>
 	</div>
 
