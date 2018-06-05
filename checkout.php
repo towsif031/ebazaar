@@ -218,7 +218,7 @@
                     <tbody>
                         <tr>
                             <th>Cart Subtotal</th>
-                            <td><span class="amount">£190.00</span></td>
+                            <td><span class="amount"><?php echo $total; ?> BDT</span></td>
                         </tr>
                         <tr>
                             <th>Shipping and Handling</th>
@@ -228,7 +228,7 @@
                         </tr>
                         <tr>
                             <th>Order Total</th>
-                            <td><strong><span class="amount">£190.00</span></strong> </td>
+                            <td><strong><span class="amount"><?php echo $total; ?> BDT</span></strong> </td>
                         </tr>
                     </tbody>
                 </table>
