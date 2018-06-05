@@ -131,14 +131,15 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 
 
 	</div>
-
+	
 	<div class="nav-search">
 		<div class="search-box">
-			<input class="search-txt" type="text" name="" placeholder="Search..." />
-			<div class="search-btn">
-				<a href="#"><i class="fa fa-search"></i>
-			</div>
-			</a>
+			<form action="searchresults.php" method="GET">
+				<input class="search-txt" type="text" name="search" placeholder="Search..." required>
+				<div>
+					<button type="submit" name="submit" class="search-btn"><i class="fa fa-search"></i></button>
+				</div>
+			</form>
 		</div>
 	</div>
 

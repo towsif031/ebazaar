@@ -62,11 +62,12 @@
 	}
 
 	.search-btn {
-		color: #2c3e50;
+		color: #bdc3c7;
+		border: none;
 		float: right;
 		width: 40px;
 		height: 40px;
-		margin-top: -10px;
+		margin-top: -32px;
 		margin-right: -10px;
 		border-radius: 50%;
 		background: #2c3e50;
@@ -88,7 +89,7 @@
 		transition: 0.4s;
 		line-height: 10px;
 		width: 240px;
-		font-weight: bold;
+		/* font-weight: bold; */
 	}
 	/* End ASBox */
 	</style>
