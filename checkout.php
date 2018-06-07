@@ -131,9 +131,9 @@
 <!-- SHOP CONTENT -->
 <section id="content">
     <div class="content-blog">
-        <div class="page_header text-center">
-            <h2>Shop - Checkout</h2>
-            <p>Get the best kit for smooth shave</p>
+        <div class="text-center">
+            <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 40px;">Checkout</h2>
+            <hr>
         </div>
 
         <form method="POST">

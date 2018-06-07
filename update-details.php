@@ -44,17 +44,18 @@
 <!-- SHOP CONTENT -->
 <section id="content">
     <div class="content-blog">
-        <div class="page_header text-center">
-            <h2>Shop - Checkout</h2>
-            <p>Get the best kit for smooth shave</p>
-        </div>
+        <!-- <div class="text-center">
+            <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 30px;">Update Account Details</h2>
+            <hr>
+        </div> -->
 
         <form method="POST">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="billing-details">
-                            <h3 class="uppercase">Update Account Details</h3>
+                            <h3 class="uppercase" style="font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 30px;">Update Account Details</h3>
+                            <hr>
                             <div class="space30"></div>
                             <label class="">Country </label>
                             <select name="country" class="form-control" required>
