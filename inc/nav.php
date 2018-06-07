@@ -70,6 +70,9 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 				<br>
 
 				<?php
+
+				if(!empty($cart)) {
+
                     // print_r($cart);
                     $total = 0;
                     foreach($cart as $key => $value){
@@ -105,6 +108,13 @@ background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+
 					<a href="cart.php">View Cart</a>
 					<a href="checkout.php">Checkout</a>
 				</div>
+
+				<?php } else { ?>
+
+				<div></div>
+
+				<?php } ?>
+
 			</div>
 		</div>
 		<?php //} ?>

@@ -16,9 +16,12 @@
         <div class="container">
             <div class="row">
                 <div class="page_header text-center">
-                    <h2>Shop Cart</h2>
-                    <p>Get the best kit for smooth shave</p>
+                    <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 40px;">Shop Cart</h2>
                 </div>
+
+                <!-- If cart is not empty -->
+                <?php if(!empty($cart)) { ?>
+
                 <div class="col-md-12">
                     <table class="cart-table table table-bordered">
                         <thead>
@@ -118,6 +121,17 @@
                         </div>
                     </div>
                 </div>
+
+                <?php } else { ?>
+
+                    <div>
+                        <h2 style="text-align: center; font-size: 18px;">Your cart is empty!</h2>
+                        <h2 style="text-align: center; font-size: 24px;">Lets have a look at our <a href="index.php">products</a>.</h2>
+                    </div>
+                    <div class="clearfix space70"></div>
+                
+                <?php } ?>
+
             </div>
         </div>
     </div>

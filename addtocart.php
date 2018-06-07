@@ -8,8 +8,10 @@
             $quant = 1;
         }
         $_SESSION['cart'][$id] = array("quantity" => $quant);
-        header('location: cart.php');
+        // header('location: cart.php');
+        header("location: " . $_SERVER["HTTP_REFERER"]);    // stay in page while adding products into cart
     }else{
-        header('location: cart.php');
+        // header('location: cart.php');
+        header("location: " . $_SERVER["HTTP_REFERER"]);
     }
 ?>

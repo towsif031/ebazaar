@@ -23,8 +23,19 @@
         <div class="container">
             <div class="row">
                 <div class="page_header text-center">
-                    <h2>My Wishlist</h2>
+                    <h2 style="font-family: Arial, Helvetica, sans-serif; font-size: 40px;">My Wishlist</h2>
                 </div>
+                
+                <?php
+                    $wishsql = "SELECT p.id AS pid, p.name, p.price , w.id AS wid, w.`timestamp` FROM wishlist w JOIN products p WHERE w.pid=p.id AND w.uid=$uid";
+                    $wishres = mysqli_query($connection, $wishsql);
+
+                    $wishqnt = mysqli_num_rows($wishres);
+
+                    // echo $wishqnt;
+                    if($wishqnt != 0) {
+                ?>
+
                 <div class="col-md-12">
                     <h3>Wishlisted Products</h3>
                     <br>
@@ -38,11 +49,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                $wishsql = "SELECT p.id AS pid, p.name, p.price , w.id AS wid, w.`timestamp` FROM wishlist w JOIN products p WHERE w.pid=p.id AND w.uid=$uid";
-                                $wishres = mysqli_query($connection, $wishsql);
-                                while($wishr = mysqli_fetch_assoc($wishres)){
-                            ?>
+                            <?php while($wishr = mysqli_fetch_assoc($wishres)){ ?>
                             <tr>
                                 <td>
                                     <a href="single.php?id=<?php echo $wishr['pid']; ?>">
@@ -67,6 +74,19 @@
                     <br>
                     <br>
                 </div>
+
+                <?php } else { ?>
+
+                    <div>
+                        <h2 style="text-align: center; font-size: 18px;">Your wishlist is empty!</h2>
+                        <h2 style="text-align: center; font-size: 24px;">Lets look for a <a href="index.php">products</a> you wish to buy.</h2>
+                    </div>
+                    <div class="clearfix space70"></div>
+                    <div class="clearfix space20"></div>
+                    <div class="clearfix space20"></div>
+
+                <?php } ?>
+
             </div>
         </div>
     </div>

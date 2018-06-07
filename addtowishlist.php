@@ -12,9 +12,11 @@
         $sql = "INSERT INTO wishlist (pid, uid) VALUES ($pid, $uid)";
         $res = mysqli_query($connection, $sql);
         if($res){
-            header('location: wishlist.php');
+            // header('location: wishlist.php');
+            header("location: " . $_SERVER["HTTP_REFERER"]);    // stay in page while adding products into wishlist
         }
     }else{
-        header('location: wishlist.php');
+        // header('location: wishlist.php');
+        header("location: " . $_SERVER["HTTP_REFERER"]);
     }
 ?>
