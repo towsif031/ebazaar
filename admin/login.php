@@ -60,6 +60,10 @@
     <link rel="stylesheet" href="css/light.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+    <!-- Favicon -->
+	<link rel="shortcut icon" href="../assets/images/favicon/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../assets/images/favicon/favicon.ico" type="image/x-icon">
+
     <!-- JS Font Script -->
     <script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
