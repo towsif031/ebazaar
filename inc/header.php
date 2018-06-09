@@ -92,6 +92,12 @@
 		/* font-weight: bold; */
 	}
 	/* End ASBox */
+
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+
 	</style>
 
 	<link rel="stylesheet" href="css/bootstrap.css">

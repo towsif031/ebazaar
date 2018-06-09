@@ -28,7 +28,7 @@ if(!isset($_SESSION['email']) & empty($_SESSION['email'])){
 					</tr>
 				</thead>
 				<tbody>
-					<?php				
+				<?php				
 					$sql = "SELECT o.id, o.totalprice, o.orderstatus, o.paymentmode, o.`timestamp`, u.firstname, u.lastname FROM orders o JOIN usersmeta u WHERE o.uid=u.uid AND o.orderstatus != 'Cancelled' ORDER BY o.id DESC";
 					$res = mysqli_query($connection, $sql);
 					while($r = mysqli_fetch_assoc($res)){
@@ -54,7 +54,7 @@ if(!isset($_SESSION['email']) & empty($_SESSION['email'])){
 						</td>
 						<td><a href="order-process.php?id=<?php echo $r['id']; ?>">Process Order</a></td>
 					</tr>
-					<?php } ?>
+				<?php } ?>
 				</tbody>
 			</table>
 		</div>
